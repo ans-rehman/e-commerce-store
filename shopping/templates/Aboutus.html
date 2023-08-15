@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us{% endblock title %}
+
+{% block activenav %}
+<nav>
+  <ul>
+    <li ><a href=" {% url 'home' %} ">Home</a></li>
+    <li class="active"><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'contact' %}">Contact</a></li>
+    <li><a href="{% url 'shop' %}">Shop</a></li>
+    <li><a href="{% url 'blogs' %}">Blogs</a></li>
+    <li><a href="#">Categories</a></li>
+  </ul>
+</nav>
+{% endblock activenav %}
+{% block maincontent %}
+    <main>
+      <div class="about-container">
+        <h1>ABOUT US</h1>
+        <div class="horizontal-line"></div>
+        <h2>
+          We are the premier source for all your spirtual, new age, occult and
+          religious products.
+        </h2>
+        <p>
+          <a href="Home.html">ZIPPY'S OCCULT SHOP</a> is both an online shop and
+          a real magic store that you can visit. Family owned and operated Since
+          1984, we are the premier source for all your Spiritual, New Age and
+          Occult products. <br /><br />We offer the ultimate one-stop shop for
+          all of your Spiritual needs and we pride ourselves on our top notch
+          customer service. With over 5,000 Spiritual, New Age, Occult and
+          Religious items, we are one of the largest in Canada. We carry a full
+          line of spiritual supplies, including occult oils, incense, powders,
+          candles, herbs, white sage, spiritual soaps, books, sprays, bath and
+          floor wash, bath salt and perfumes. Everything you’ll need about those
+          who cast magic spells, love spells, money spells, and protection
+          spells in the African-American hoodoo, Pagan magick, and other
+          Witchcraft traditions. <br /><br />
+          We will continue to offer the highest quality spiritual products while
+          ensuring that we remain your first choice for supplying all your
+          needs. As your partner, we are committed to your continued business
+          success.
+        </p>
+      </div>
+    </main>
+    <div class="heading">
+      <h1>GET CONNECTED</h1>
+    </div>
+{% endblock maincontent %}

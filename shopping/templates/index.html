@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Shop</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="Admin.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="Home.html">
+        <img src="Logo.webp">
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="Home.html">Home</a></li>
+        <li><a href="Aboutus.html">About</a></li>
+        <li><a href="Contactus.html">Contact</a></li>
+        <li class="active"><a href="Shop.html">Shop</a></li>
+        <li><a href="Blogs.html">Blogs</a></li>
+        <li><a href="Home.html#Categories">Categories</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <div class="profile-icon">
+        <button id="searchBtn">
+          <img src="search.png" alt="Search">
+        </button>
+        <div id="searchBar" class="search-bar">
+          <input type="text" placeholder="Search">
+        </div>
+      </div>
+
+      <div class="profile-icon">
+        <button id="shopBtn">
+          <img src="shop.PNG" alt="Shop">
+        </button>
+        <ul class="login-signup-list">
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Services</a></li>
+        </ul>
+      </div>
+
+      <div class="profile-icon">
+        <div class="profile-btn">
+          <button id="profileBtn">
+            <a>Login/SignUp</a>
+          </button>
+        </div>
+        <ul class="login-signup-list">
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Sign Up</a></li>
+          <div class="horizontal-line"></div>
+          <li><a href="#">Bookings</a></li>
+          <li><a href="#">Orders</a></li>
+          <li><a href="#">My Account</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </header>
+
+  <main>
+    <div class="about-container">
+      <h1>Shop Now</h1>
+      <div class="horizontal-line"></div>
+
+      <div class="product-list">
+        <ul>
+          <li class="all-products">All Products</li>
+          <li class="product-type">Floor and Bath Wash</li>
+          <li class="product-type">Mojo Bag & Miscellaneous</li>
+          <li class="product-type">Oils</li>
+          <li class="product-type">Powder</li>
+          <li class="product-type">Zippy's Special Kits</li>
+          <li class="product-type">Zippy's Candle Set</li>
+          <li class="product-type">Jewelry</li>
+          <li class="product-type">Candle & Incense</li>
+          <li class="product-type">Spray & Soaps</li>
+          <li class="product-type">Miscellaneous</li>
+        </ul>
+      </div>
+
+      <div class="product-grid">
+        <!-- Product grid items will be dynamically added here -->
+
+      </div>
+
+      <div class="pagination">
+        <ul>
+
+          <li class="page-number-active">1</li>
+          <li class="page-number">2</li>
+          <li class="page-number">3</li>
+          <li class="page-number">4</li>
+          <li class="page-number">5</li>
+          <li class="page-number">6</li>
+
+        </ul>
+      </div>
+    </div>
+  </main>
+
+
+
+  <footer>
+    <!-- Social Media Icons -->
+    <div class="social-media">
+      <a href="#"><img src="facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="twitter.png" alt="Twitter"></a>
+      <a href="#"><img src="instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="linkedin.png" alt="LinkedIn"></a>
+      <a href="#"><img src="youtube.png" alt="YouTube"></a>
+      <a href="#"><img src="pinterest.png" alt="Pinterest"></a>
+    </div>
+
+    <!-- Subscription Section -->
+    <div class="subscribe">
+      <h4>SUBSCRIBE</h4>
+      <p>Get 10% off your first purchase when you sign up for our newsletter!</p>
+      <div class="email-container">
+        <input type="email" placeholder="Enter your email">
+        <button class="signup-button">Sign Up</button>
+      </div>
+    </div>
+
+    <!-- Picture Gallery -->
+    <div class="gallery">
+      <img src="matches.webp" alt="Gallery Image 1">
+      <img src="candles.webp" alt="Gallery Image 2">
+      <img src="agrbtti.webp" alt="Gallery Image 3">
+      <img src="table.webp" alt="Gallery Image 3">
+    </div>
+
+    <!-- Copyright Notice -->
+    <p>&copy; 2019 - All Rights Reserved</p>
+
+    <!-- Privacy Policy and Terms and Conditions -->
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms and Conditions</a>
+    </div>
+  </footer>
+
+
+  <script>
+    // JavaScript code for the shop page (index.html)
+
+    // Function to fetch products from the server and display them
+    async function fetchProducts(category, page) {
+      const response = await fetch(`/api/products?category=${category}&page=${page}`);
+      const data = await response.json();
+      const products = data.products;
+
+      // Clear the existing product grid
+      const productGrid = document.querySelector('.product-grid');
+      productGrid.innerHTML = '';
+
+      // Display products in the grid
+      products.forEach((product) => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        // Populate the productCard with product details (name, price, image, etc.)
+        // ...
+
+        productGrid.appendChild(productCard);
+      });
+
+      // Update the pagination based on the total number of pages (data.totalPages)
+      // ...
+    }
+
+    // Function to handle pagination and category filter clicks
+    function handlePaginationClick(page) {
+      // Get the selected category (if any) from the UI
+      const selectedCategory = document.querySelector('.product-list .selected');
+
+      // If a category is selected, use it; otherwise, use an empty string to get all products
+      const category = selectedCategory ? selectedCategory.textContent : '';
+
+      // Fetch products for the selected page and category
+      fetchProducts(category, page);
+    }
+
+    // Add event listeners for pagination and category filter clicks
+    const pageNumbers = document.querySelectorAll('.page-number');
+    pageNumbers.forEach((pageNumber) => {
+      pageNumber.addEventListener('click', () => {
+        // Add a CSS class to highlight the selected page number
+        pageNumbers.forEach((number) => number.classList.remove('page-number-active'));
+        pageNumber.classList.add('page-number-active');
+        // Get the selected page number from the clicked element
+        const page = parseInt(pageNumber.textContent);
+        // Fetch products for the selected page and category
+        handlePaginationClick(page);
+      });
+    });
+
+    const productTypes = document.querySelectorAll('.product-type');
+    productTypes.forEach((type) => {
+      type.addEventListener('click', () => {
+        // Add a CSS class to highlight the selected product type
+        productTypes.forEach((productType) => productType.classList.remove('selected'));
+        type.classList.add('selected');
+        // Get the selected category from the clicked element
+        const category = type.textContent;
+        // Fetch products for the first page and selected category
+        handlePaginationClick(1);
+      });
+    });
+
+    // Fetch initial products on page load (page 1, all products)
+    fetchProducts('', 1);
+
+  </script>
+</body>
+
+</html>

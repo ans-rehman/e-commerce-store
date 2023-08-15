@@ -1,0 +1,124 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: black;
+    text-align: center;
+    padding: 10px 0;
+  }
+  
+  .logo img{
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+  }
+  
+  main {
+    display: flex;
+  }
+
+  .info{
+    width: 30%;
+    height: 800px;
+    background-color: #ccc;
+    padding: 30px;
+  }
+
+  .steps{
+    padding: 30px 50px 30px 50px;
+  }
+
+  .checkout-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-right: 20px;
+  }
+  
+  .step {
+    text-align: center;
+  }
+  
+  .step span {
+    display: block;
+    font-size: 24px;
+    background-color: #ccc;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 50%;
+    margin: 0 auto 5px;
+  }
+  
+  .step.active span {
+    background-color: red;
+    color: white;
+  }
+  
+  .customer-info,
+  .shipping-payment,
+  .order-confirmation {
+    display: block;
+  }
+
+  .customer-info {
+    display: block;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  
+  .customer-info input,
+  .customer-info select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .customer-info select {
+    background-color: #fff;
+  }
+  
+  .customer-info input[type="text"],
+  .customer-info select {
+    margin-bottom: 10px;
+  }
+
+  .product-info{
+    display: flex;
+  }
+  
+  .product-info h2{
+    color: red;
+    font-weight: bold;
+    font-size: small;
+  }
+
+  .product-info img{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    right: 0;
+  }
+  
+  .continue-btn {
+    background-color: red;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .continue-btn:hover {
+    background-color: black;
+    transform: scale(1.08);
+    transition: 0.3s;
+  }
+  

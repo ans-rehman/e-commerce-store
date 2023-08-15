@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Bookings{% endblock title %}
+{% block maincontent %}
+    <main>
+        <div class="about-container">
+            <h1>Hello! {{ user.username }}</h1>
+            <div class="dashboard">
+                <ul>
+                    <li class="active1"><a href="{% url 'book' %}">Bookings</a></li>
+                    <li><a href="{% url 'order' %}">Orders</a></li>
+                    <li><a href="{% url 'dashboard' %}">My Account</a></li>
+                </ul>
+                <div class="user-details">
+                    <h2>History</h2>
+                    <p>No Bookings Available</p>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock maincontent %}
+
+{% block footercontent %}
+    <footer>
+        <!-- Copyright Notice -->
+        <p>Copyright &copy; 2019 - All Rights Reserved</p>
+        <!-- Privacy Policy and Terms and Conditions -->
+        <div class="footer-links">
+            <a href="{% url 'privacy' %}">Privacy Policy</a>
+            <a href="{% url 'terms' %}">Terms and Conditions</a>
+        </div>
+    </footer>
+{% endblock footercontent %}

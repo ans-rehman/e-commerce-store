@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SignUp</title>
+    <link rel="stylesheet" href="{% static "styles/styles.css" %}">
+    <style>
+
+      body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        {% comment %} min-width: 100vw; {% endcomment %}
+      }
+      *{
+        {% comment %} padding:0; {% endcomment %}
+        margin:0;
+      }
+      form{
+        font-family: sanserif;
+        width: 350px;
+      }
+      button{
+        border-radius: 5px;
+      }
+      #id_password1, #id_password2, #id_username{
+        padding:5px;
+        border: 1px black solid;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post" action="{% url 'signuplocal' %}">
+      <h2 style="color: black; text-align: center">Sign Up</h2>
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Sign Up</button>
+      <div>
+        Already have an account?<a href="{% url 'loginlocal' %}">Login</a>
+      </div>
+    </form>
+  </body>
+</html>

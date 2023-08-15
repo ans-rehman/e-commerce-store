@@ -1,0 +1,68 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %} Your E-commerceCart {% endblock title %}
+
+{% block maincontent %}
+<main>
+  <div class="about-container" >
+    <h1>Hello! {{ user.username }}</h1>
+    <div class="dashboard">
+      <ul>
+        <li><a href="{% url 'book' %}">Bookings</a></li>
+        <li><a href="{% url 'order' %}">Orders</a></li>
+        <li class="active1">
+          <a href="{% url 'dashboard' %}">My Account</a>
+        </li>
+      </ul>
+      <div class="user-details">
+        <h2>Name</h2>
+        <p>Email:</p>
+        <p>{{ user.email }}</p>
+        <p>Phone:</p>
+        <p>+1 234 567 890</p>
+        <button id="edit-details">Edit Profile</button>
+      </div>
+      <div class="user-details-edit">
+        <h2>Profile</h2>
+        <input type="text" placeholder="First Name" />
+        <input type="text" placeholder="Second Name" />
+        <input type="text" placeholder="Enter your number" />
+        <button id="save-details">Save</button>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock maincontent %}
+
+{% block footercontent %}
+<footer>
+  <p style="color: #ccc; font-size: small">
+    Copyright &copy; 2019 - All Rights Reserved
+  </p>
+  <div class="footer-links">
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms and Conditions</a>
+  </div>
+</footer>
+{% endblock footercontent %}
+
+{% block scriptcontent %}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const userDetails = document.querySelector(".user-details");
+    const userDetailsEdit = document.querySelector(".user-details-edit");
+    const editButton = document.getElementById("edit-details");
+    const saveButton = document.getElementById("save-details");
+
+    editButton.addEventListener("click", () => {
+      userDetails.style.display = "none";
+      userDetailsEdit.style.display = "block";
+    });
+
+    saveButton.addEventListener("click", () => {
+      userDetails.style.display = "block";
+      userDetailsEdit.style.display = "none";
+    });
+  });
+</script>
+{% endblock scriptcontent %}

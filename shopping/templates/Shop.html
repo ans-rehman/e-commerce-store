@@ -1,0 +1,314 @@
+{% extends 'base.html' %} 
+{% load static %}
+ {% block title %}Shoppng{% endblock title %}
+  {% block head %}
+   <link rel="stylesheet" type="text/css" href="{% static "styles/shop.css" %}"> 
+  {% endblock head %}
+   {% block activenav %}
+<nav>
+  <ul>
+    <li><a href=" {% url 'home' %} ">Home</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'contact' %}">Contact</a></li>
+    <li class="active"><a href="{% url 'shop' %}">Shop</a></li>
+    <li><a href="{% url 'blogs' %}">Blogs</a></li>
+    <li><a href="#">Categories</a></li>
+  </ul>
+</nav>
+{% endblock activenav %}
+ {% block maincontent %}
+<main>
+  <div class="about-container">
+    <h1>SHOP NOW</h1>
+    <div class="horizontal-line"></div>
+
+    <div class="product-list">
+      <ul>
+        <li class="all-products product-type active-shop" id="all">
+          All Products
+        </li>
+        <li class="product-type" id="floorBath">Floor and Bath Wash</li>
+        <li class="product-type" id="mojoBag">Mojo Bag & Miscellaneous</li>
+        <li class="product-type" id="oils">Oils</li>
+        <li class="product-type" id="powder">Powder</li>
+        <li class="product-type" id="kit">Zippy's Special Kits</li>
+        <li class="product-type" id="candleSet">Zippy's Candle Set</li>
+        <li class="product-type" id="jewelry">Jewelry</li>
+        <li class="product-type" id="candles">Candle & Incense</li>
+        <li class="product-type" id="spraySoaps">Spray & Soaps</li>
+        <li class="product-type" id="misc">Miscellaneous</li>
+      </ul>
+    </div>
+
+    <div class="product-grid">
+      <!-- Product grid items will be dynamically added here -->
+      <div class="feature-products1">
+        <div class="product-container1">
+          {%for product in products%}
+
+          <a
+            class="product-item1"
+            href="#"
+            data-category="{{product.category}}"
+          >
+            <img src='/media/{{ product.image }}' alt="product4" />
+            <h3>{{product.product_name}}</h3>
+            <p>{{product.desc}}</p>
+          </a>
+          {% endfor %}
+
+          <!-- Add more product items as needed -->
+        </div>
+      </div>
+    </div>
+
+    <div class="pagination">
+      <ul>
+        <li class="page-number-active">1</li>
+        <li class="page-number">2</li>
+        <li class="page-number">3</li>
+        <li class="page-number">4</li>
+        <li class="page-number">5</li>
+        <li class="page-number">6</li>
+      </ul>
+    </div>
+  </div>
+</main>
+{% endblock maincontent %}
+ {% block scriptcontent %}
+<script>
+  // Wait for the DOM content to load
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get references to the category buttons and product items
+    const allProductsButton = document.getElementById("all");
+    const floorBathButton = document.getElementById("floorBath");
+    const mojoBagButton = document.getElementById("mojoBag");
+    const oilsButton = document.getElementById("oils");
+    const powderButton = document.getElementById("powder");
+    const kitButton = document.getElementById("kit");
+    const candleSetButton = document.getElementById("candleSet");
+    const jewelryButton = document.getElementById("jewelry");
+    const candlesButton = document.getElementById("candles");
+    const sprayButton = document.getElementById("spraySoaps");
+    const miscButton = document.getElementById("misc");
+
+    const categoryButtons = document.querySelectorAll(".product-type");
+    const productItems = document.querySelectorAll(".product-item1");
+    const paginationContainer = document.querySelector(".pagination ul");
+
+    // Define the number of products per page
+    const productsPerPage = 16;
+    let currentPage = 1;
+    let currentCategory = "all";
+
+    // Function to filter products based on category
+    function filterProducts(category) {
+      productItems.forEach((item) => {
+        if (category === "all" || item.dataset.category === category) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+
+      currentCategory = category;
+      handlePagination(currentPage, countItemsInCategory(category));
+    }
+
+    // Function to count items in the current category
+    function countItemsInCategory(category) {
+      let count = 0;
+      productItems.forEach((item) => {
+        if (category === "all" || item.dataset.category === category) {
+          count++;
+        }
+      });
+      return count;
+    }
+
+    // Function to update pagination buttons based on the current category
+    function updatePaginationButtons(category) {
+      const totalProducts = countItemsInCategory(category);
+      const totalPages = Math.ceil(totalProducts / productsPerPage);
+
+      paginationContainer.innerHTML = "";
+      for (let i = 1; i <= totalPages; i++) {
+        const button = document.createElement("li");
+        button.textContent = i;
+        button.classList.add("page-number");
+        if (i === currentPage) {
+          button.classList.add("page-number-active");
+        }
+        paginationContainer.appendChild(button);
+      }
+    }
+
+    // Initial setup: show all products
+    currentCategory = "all";
+    filterProducts(currentCategory);
+    setActiveCategoryButton(allProductsButton);
+
+    // Pagination setup
+    updatePaginationButtons(currentCategory);
+    handlePagination(1, countItemsInCategory(currentCategory));
+
+    // Function to handle pagination
+    function handlePagination(pageNumber, totalItems) {
+      const totalPages = Math.ceil(totalItems / productsPerPage);
+      currentPage = pageNumber;
+
+      const startIdx = (pageNumber - 1) * productsPerPage;
+      const endIdx = startIdx + productsPerPage;
+
+      productItems.forEach((item, idx) => {
+        if (
+          (currentCategory === "all" ||
+            item.dataset.category === currentCategory) &&
+          idx >= startIdx &&
+          idx < endIdx
+        ) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+
+      // Update the active class for the pagination buttons
+      const paginationButtons = document.querySelectorAll(".page-number");
+      paginationButtons.forEach((button, idx) => {
+        if (idx === pageNumber - 1) {
+          button.classList.add("page-number-active");
+        } else {
+          button.classList.remove("page-number-active");
+        }
+      });
+    }
+
+    // Function to add 'active-shop' class to the selected category button
+    function setActiveCategoryButton(activeButton) {
+      categoryButtons.forEach((button) => {
+        if (button === activeButton) {
+          button.classList.add("active-shop");
+        } else {
+          button.classList.remove("active-shop");
+        }
+      });
+    }
+
+    // Add click event listeners to the category buttons
+    allProductsButton.addEventListener("click", function () {
+      setActiveCategoryButton(allProductsButton);
+      currentCategory = "all";
+      updatePaginationButtons(currentCategory);
+      handlePagination(currentPage, countItemsInCategory(currentCategory));
+    });
+
+    floorBathButton.addEventListener("click", function () {
+      setActiveCategoryButton(floorBathButton);
+      currentCategory = "Floor and Bath Wash";
+      updatePaginationButtons(currentCategory);
+      handlePagination(1, countItemsInCategory(currentCategory));
+    });
+
+    mojoBagButton.addEventListener("click", function () {
+      setActiveCategoryButton(mojoBagButton);
+      currentCategory = "Mojo Bag & Miscellaneous";
+      updatePaginationButtons(currentCategory);
+      handlePagination(1, countItemsInCategory(currentCategory));
+    });
+
+    oilsButton.addEventListener("click", function () {
+      setActiveCategoryButton(oilsButton);
+      currentCategory = "Oils";
+      updatePaginationButtons(currentCategory);
+      handlePagination(1, countItemsInCategory(currentCategory));
+    });
+
+    powderButton.addEventListener("click", function () {
+      setActiveCategoryButton(powderButton);
+      currentCategory = "Powder";
+      updatePaginationButtons(currentCategory);
+      handlePagination(1, countItemsInCategory(currentCategory));
+    });
+
+    kitButton.addEventListener("click", function () {
+      setActiveCategoryButton(kitButton);
+      currentCategory = "Zippy's Special Kits";
+      updatePaginationButtons(currentCategory);
+      handlePagination(1, countItemsInCategory(currentCategory));
+    });
+
+    candleSetButton.addEventListener("click", function () {
+      setActiveCategoryButton(candleSetButton);
+      currentCategory = "Zippy's Candle Set";
+      updatePaginationButtons(currentCategory);
+      handlePagination(1, countItemsInCategory(currentCategory));
+    });
+
+    jewelryButton.addEventListener("click", function () {
+      setActiveCategoryButton(jewelryButton);
+      currentCategory = "Jewelry";
+      updatePaginationButtons(currentCategory);
+      handlePagination(1, countItemsInCategory(currentCategory));
+    });
+
+    candlesButton.addEventListener("click", function () {
+      setActiveCategoryButton(candlesButton);
+      currentCategory = "Candle & Incense";
+      updatePaginationButtons(currentCategory);
+      handlePagination(1, countItemsInCategory(currentCategory));
+    });
+
+    sprayButton.addEventListener("click", function () {
+      setActiveCategoryButton(sprayButton);
+      currentCategory = "Spray & Soaps";
+      updatePaginationButtons(currentCategory);
+      handlePagination(1, countItemsInCategory(currentCategory));
+    });
+
+    miscButton.addEventListener("click", function () {
+      setActiveCategoryButton(miscButton);
+      currentCategory = "Miscellaneous";
+      updatePaginationButtons(currentCategory);
+      handlePagination(1, countItemsInCategory(currentCategory));
+    });
+
+    // Pagination setup
+    const totalProducts = countItemsInCategory("all");
+    const totalPages = Math.ceil(totalProducts / productsPerPage);
+
+    // Create the pagination buttons dynamically
+    paginationContainer.innerHTML = "";
+    for (let i = 1; i <= totalPages; i++) {
+      const button = document.createElement("li");
+      button.textContent = i;
+      button.classList.add("page-number");
+      if (i === 1) {
+        button.classList.add("page-number-active");
+      }
+      paginationContainer.appendChild(button);
+    }
+
+    // Function to hide all products beyond the first page
+    function hideProductsBeyondFirstPage() {
+      productItems.forEach((item, idx) => {
+        if (idx >= productsPerPage) {
+          item.style.display = "none";
+        }
+      });
+    }
+
+    hideProductsBeyondFirstPage();
+
+    const paginationButtons = document.querySelectorAll(".page-number");
+    paginationButtons.forEach((button) => {
+      button.addEventListener("click", function () {
+        // Get the page number from the button text
+        const pageNumber = parseInt(button.textContent);
+        currentPage = pageNumber;
+        handlePagination(pageNumber, countItemsInCategory(currentCategory));
+      });
+    });
+  });
+</script>
+{% endblock scriptcontent %}

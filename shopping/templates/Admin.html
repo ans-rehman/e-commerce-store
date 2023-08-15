@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container mt-5">
+
+        <form id="productForm">
+            <h2 class="farm-heading">ADMIN PAGE</h2>
+            <div class="form-group">
+                <label for="productName">Product Name:</label>
+                <input type="text" class="form-control" id="productName" required>
+            </div>
+            <div class="form-group">
+                <label for="productPrice">Price:</label>
+                <input type="number" class="form-control" id="productPrice" required>
+            </div>
+            <div class="form-group">
+                <label for="productDescription">Description:</label>
+                <textarea class="form-control" id="productDescription" rows="4" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="productCategory">Category:</label>
+                <select class="form-control" id="productCategory" required>
+                    <option value="">Select a category</option>
+                    <!-- Add the product categories here dynamically -->
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="productImage">Image:</label>
+                <input type="file" class="form-control-file" id="productImage" accept="image/*" required>
+                <img id="imagePreview" src="#" alt="Preview" style="display: none; max-width: 200px; margin-top: 10px;">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // Define an array of product categories
+        const productCategories = [
+            "Floor & Bath Wash",
+            "Mojo Bag & Miscellaneous",
+            "Oils",
+            "Powder",
+            "Zippy's Special Kits",
+            "Zippy's Candle Set",
+            "Jewelry",
+            "Candle & Incense",
+            "Spray & Soaps",
+            "Miscellaneous",
+            "Cards",
+            "Zippy's Spiritual Reading Card Deck",
+        ];
+
+        // Function to handle image selection and preview
+        function handleImagePreview(event) {
+            const fileInput = event.target;
+            const imagePreview = document.getElementById("imagePreview");
+            const file = fileInput.files[0];
+
+            if (file) {
+                const reader = new FileReader();
+
+                reader.onload = function () {
+                    imagePreview.src = reader.result;
+                    imagePreview.style.display = "block";
+                };
+
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.src = "#";
+                imagePreview.style.display = "none";
+            }
+        }
+
+        // Populate the select element with product categories
+        const productCategorySelect = document.getElementById("productCategory");
+        productCategories.forEach(category => {
+            const option = document.createElement("option");
+            option.text = category;
+            productCategorySelect.add(option);
+        });
+
+        // Form submission handling
+        const productForm = document.getElementById("productForm");
+        productForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const productName = document.getElementById("productName").value;
+            const productPrice = parseFloat(document.getElementById("productPrice").value);
+            const productDescription = document.getElementById("productDescription").value;
+            const productCategory = document.getElementById("productCategory").value;
+            const productImage = document.getElementById("productImage").value;
+
+            // You can perform additional client-side validation here if needed
+
+            // Create a product object to send to the server
+            const productData = {
+                name: productName,
+                price: productPrice,
+                description: productDescription,
+                category: productCategory,
+                image: imagePreview.src, // Use the base64-encoded image data here
+            };
+
+
+            // Send the product data to the server via API endpoint
+            fetch('/api/products', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(productData)
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Product submission failed.');
+                    }
+                    // Show a confirmation message to the admin
+                    alert("Product uploaded.");
+
+                    // Optionally, clear the form for the next product input
+                    productForm.reset();
+
+                    // Reset the image preview
+                    const imagePreview = document.getElementById("imagePreview");
+                    imagePreview.src = "#";
+                    imagePreview.style.display = "none";
+                })
+                .catch(error => {
+                    console.error(error);
+                    alert('Product submission failed. Please try again later.');
+                });
+
+        });
+    </script>
+
+</body>
+
+</html>

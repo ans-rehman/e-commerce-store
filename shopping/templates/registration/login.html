@@ -1,0 +1,51 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+    <link rel="stylesheet" href="{% static "styles/styles.css" %}">
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      form {
+        width: 270px;
+      }
+      form > h2 {
+        color: black;
+        text-align: center;
+      }
+      button {
+        border-radius: 5px;
+      }
+      #password,
+      #username {
+        padding: 10px;
+        border: 1px black solid;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <form method="post" action="{% url 'loginlocal' %}">
+      <h2>Login</h2>
+      {% csrf_token %}
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required /><br />
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required /><br />
+      {% if error_message %}
+      <div>{{ error_message }}</div>
+      {% endif %}
+      <button type="submit">Log In</button>
+      <div>
+        Don't have an account?<a href="{% url 'signuplocal' %}">SignUp</a>
+      </div>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Zippys Occult Shop</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Arimo&display=swap');
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <a href="Home.html">
+        <img src="Logo.webp">
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li class="active"><a href="Home.html">Home</a></li>
+        <li><a href="Aboutus.html">About</a></li>
+        <li><a href="Contactus.html">Contact</a></li>
+        <li><a href="Shop.html">Shop</a></li>
+        <li><a href="Blogs.html">Blogs</a></li>
+        <li><a href="#Categories">Categories</a></li>
+      </ul>
+    </nav>
+    <div class="icons">
+      <div id="searchBar" class="search-bar">
+        <input type="text" placeholder="Search">
+      </div>
+      <div class="profile-icon">
+        <button id="searchBtn">
+          <img src="search.png" alt="Search">
+        </button>
+      </div>
+
+      <div class="profile-icon">
+        <button id="shopBtn">
+          <img src="shop.PNG" alt="Shop">
+        </button>
+        <ul class="login-signup-list">
+          <li><a href="#">Products</a></li>
+          <li><a href="cart.html">Services</a></li>
+        </ul>
+      </div>
+
+      <div class="profile-icon">
+        <div class="profile-btn">
+          <button id="profileBtn">
+            <a>Login/Signup</a>
+          </button>
+        </div>
+        <ul class="login-signup-list">
+          <li><a href="Login.html">Sign In</a></li>
+          <li><a href="Signup.html">Create Account</a></li>
+          <div class="horizontal-line"></div>
+          <li><a href="#">Bookings</a></li>
+          <li><a href="#">Orders</a></li>
+          <li><a href="Login.html">My Account</a></li>
+        </ul>
+        <ul class="login-signup-list-display-after">
+          <li><p>Signed in as:</p></li>
+          <li><p>awais@gmail.com</p></li>
+          <div class="horizontal-line"></div>
+          <li><a href="#">Bookings</a></li>
+          <li><a href="#">Orders</a></li>
+          <li><a href="user-dashboard.html">My Account</a></li>
+          <li><a id="signOutBtn" href="#">Sign Out</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </header>
+
+  <div class="slideshow-container">
+    <div class="slideshow">
+      <img src="occult.PNG" alt="Image 1">
+      <img src="cards.PNG" alt="Image 2">
+      <img src="occult.PNG" alt="Image 3">
+      <img src="cards.PNG" alt="Image 4">
+      <!-- Add more <img> elements for additional images -->
+    </div>
+    <div class="starting">
+      <h1>ZIPPY'S OCCULT SHOP</h1>
+      <p>Spiritual Candles, Incense, Oils and much more<br>Spend $75.00 and up to receive $10.00 off (exp:9/03/2023)
+        code: SUMMER2023</p>
+      <button>
+        <a href="Shop.html">Shop Now</a>
+      </button>
+    </div>
+  </div>
+
+  <div class="after-start">
+    <h1>ZIPPY'S SPIRITUAL READINGS</h1>
+    <p>$35 (15-20 min.) $50 (25-35 min) $70 ( up to an hour) </p>
+    <button>
+      <a href="Contactus.html">Contact Now</a>
+    </button>
+  </div>
+
+  <div class="heading">
+    <h1>Feature Products</h1>
+  </div>
+
+  <div class="feature-products">
+    <div class="filter-buttons">
+      <button class="active" onclick="filterSelection('all')">All Services</button>
+      <button onclick="filterSelection('spiritual')">Spiritual Readings</button>
+    </div>
+
+    <div class="product-container">
+      <a class="product-item all spiritual" href="product1.html">
+        <img src="Logo.webp" alt="product1">
+        <h3>Zippy's Spiritual Reading (One Topic)</h3>
+        <p>20 mins only in $35</p>
+      </a>
+      <div class="product-item all spiritual">
+        <img src="Logo.webp" alt="product2">
+        <h3>Zippy's Spiritual Reading (Two Topics)</h3>
+        <p>40 mins only in $50</p>
+      </div>
+      <div class="product-item all spiritual">
+        <img src="Logo.webp" alt="product3">
+        <h3>Zippy's Spiritual Reading (Three Topics)</h3>
+        <p>1 hour only in $70</p>
+      </div>
+      <div class="product-item all">
+        <img src="10005.jpg" alt="product4">
+        <h3>Product 4</h3>
+        <p>Description of Product 4</p>
+      </div>
+      <div class="product-item all">
+        <img src="10003.jpg" alt="product5">
+        <h3>Product 5</h3>
+        <p>Description of Product 5</p>
+      </div>
+      <div class="product-item all">
+        <img src="10006.jpg" alt="product6">
+        <h3>Product 6</h3>
+        <p>Description of Product 6</p>
+      </div>
+      <div class="product-item all">
+        <img src="10007.jpg" alt="product7">
+        <h3>Product 7</h3>
+        <p>Description of Product 7</p>
+      </div>
+      <div class="product-item all">
+        <img src="10008.jpg" alt="product8">
+        <h3>Product 8</h3>
+        <p>Description of Product 8</p>
+      </div>
+      <div class="product-item all">
+        <img src="10009.jpg" alt="product9">
+        <h3>Product 9</h3>
+        <p>Description of Product 9</p>
+      </div>
+      <div class="product-item all">
+        <img src="10003.jpg" alt="product10">
+        <h3>Product 10</h3>
+        <p>Description of Product 10</p>
+      </div>
+      <div class="product-item all">
+        <img src="10006.jpg" alt="product11">
+        <h3>Product 11</h3>
+        <p>Description of Product 11</p>
+      </div>
+      <div class="product-item all">
+        <img src="10007.jpg" alt="product12">
+        <h3>Product 12</h3>
+        <p>Description of Product 12</p>
+      </div>
+      <!-- Add more product items as needed -->
+    </div>
+  </div>
+
+  <div class="heading" id="Categories">
+    <h1>Popular Categories</h1>
+  </div>
+
+  <div class="desc">
+    <h2>HOT SELLERS</h2>
+    <p>Just randon words. fqn iefhaio aseifhua wihe kwjafgawu kqjshi akwdjgbq aqjs<br>wkudguiadb aqqqdhiuawdma d akjdh
+      akjwda zjsdhiau majdgba qJHGu awvjdyg amwhdga mjsdgay</p>
+  </div>
+
+  <div class="category-container">
+
+
+    <div class="category-item">
+      <a href="category1.html">
+        <img src="powders.webp" alt="Category 1">
+        <p>Powders</p>
+      </a>
+    </div>
+    <div class="category-item">
+      <a href="category2.html">
+        <img src="wash.webp" alt="Category 2">
+        <p>Floor & Bath Wash</p>
+      </a>
+    </div>
+    <div class="category-item">
+      <a href="category3.html">
+        <img src="kit.webp" alt="Category 3">
+        <p>ZIPPY'S SPECIAL KIT</p>
+      </a>
+    </div>
+    <!-- Add more category items as needed -->
+  </div>
+
+  <div class="chat-icon-container">
+    <div class="chat-icon" onclick="toggleChatBox()">
+      <img src="chat.png" alt="Chat Icon" width="30" height="30">
+    </div>
+  </div>
+
+  <div class="chat-box" id="chatBox">
+    <div class="chat-box-header">
+      <img src="Logo.webp" alt="Profile Image" class="profile-image">
+      <div class="header-text">Contact Us</div>
+      <div class="sub-header-text">We will respond soon!</div>
+    </div>
+    <div class="chat-box-content">
+      <!-- Chat messages can be displayed here -->
+    </div>
+    <div class="chat-input-container">
+      <input type="text" class="chat-input" placeholder="Type your message...">
+    </div>
+  </div>
+
+  <div class="heading">
+    <h1>Social</h1>
+  </div>
+
+  <footer>
+    <!-- Social Media Icons -->
+    <div class="social-media">
+      <a href="#"><img src="facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="twitter.png" alt="Twitter"></a>
+      <a href="#"><img src="instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="linkedin.png" alt="LinkedIn"></a>
+      <a href="#"><img src="youtube.png" alt="YouTube"></a>
+      <a href="#"><img src="pinterest.png" alt="Pinterest"></a>
+    </div>
+
+    <!-- Subscription Section -->
+    <div class="subscribe">
+      <h4>SUBSCRIBE</h4>
+      <p>Get 10% off your first purchase when you sign up for our newsletter!</p>
+      <div class="email-container">
+        <input type="email" placeholder="Enter your email">
+        <button class="signup-button">Sign Up</button>
+      </div>
+    </div>
+
+    <!-- Picture Gallery -->
+    <div class="gallery">
+      <img src="matches.webp" alt="Gallery Image 1">
+      <img src="candles.webp" alt="Gallery Image 2">
+      <img src="agrbtti.webp" alt="Gallery Image 3">
+      <img src="table.webp" alt="Gallery Image 3">
+    </div>
+
+    <!-- Copyright Notice -->
+    <p style="color: #ccc; font-size: small;">Copyright &copy; 2019 - All Rights Reserved</p>
+
+    <!-- Privacy Policy and Terms and Conditions -->
+    <div class="footer-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms and Conditions</a>
+    </div>
+  </footer>
+
+  <script>
+    const isLoggedIn = false;
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const loginSignupList = document.querySelector(".login-signup-list");
+      const loginSignupListAfter = document.querySelector(".login-signup-list-display-after");
+      const signOutBtn = document.getElementById("signOutBtn");
+
+      if (isLoggedIn) {
+        loginSignupList.style.display = "block";
+        loginSignupListAfter.style.display = "none";
+      } else {
+        loginSignupList.style.display = "none";
+        loginSignupListAfter.style.display = "block";
+      }
+
+      signOutBtn.addEventListener("click", () => {
+        // Here you can put your sign-out logic, like clearing cookies or session data
+        // After sign out, toggle the visibility of the lists
+        loginSignupList.style.display = "block";
+        loginSignupListAfter.style.display = "none";
+      });
+    });
+
+  </script>
+
+  <script>
+    function toggleChatBox() {
+      var chatBox = document.getElementById("chatBox");
+      chatBox.style.display = chatBox.style.display === "block" ? "none" : "block";
+    }
+
+  </script>
+
+  <script>
+    const searchBtn = document.getElementById("searchBtn");
+    const searchBar = document.getElementById("searchBar");
+    const shopBtn = document.getElementById("shopBtn");
+    const shopList = document.querySelector(".profile-icon:nth-child(2) .login-signup-list");
+
+    searchBtn.addEventListener("click", function () {
+      if (searchBar.style.display === "none" || searchBar.style.display === "") {
+        searchBar.style.display = "block";
+      } else {
+        searchBar.style.display = "none";
+      }
+    });
+
+    shopBtn.addEventListener("click", function () {
+      if (shopList.style.display === "none" || shopList.style.display === "") {
+        shopList.style.display = "block";
+      } else {
+        shopList.style.display = "none";
+      }
+    });
+
+  </script>
+
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+      const slideshow = document.querySelector(".slideshow");
+      const slides = slideshow.getElementsByTagName("img");
+
+      slideIndex++;
+      if (slideIndex >= slides.length) {
+        slideIndex = 0;
+      }
+
+      slideshow.style.transform = `translateX(-${slideIndex * 100}%)`;
+
+      setTimeout(showSlides, 9000); // Change slide every 9 seconds
+    }
+  </script>
+
+
+
+
+  <script>//filtering feature products
+    function filterSelection(c) {
+      var products = document.getElementsByClassName("product-item");
+      var buttons = document.getElementsByClassName("filter-buttons")[0].getElementsByTagName("button");
+
+      for (var i = 0; i < products.length; i++) {
+        if (c === "all" || products[i].className.indexOf(c) > -1) {
+          products[i].style.display = "block";
+        } else {
+          products[i].style.display = "none";
+        }
+      }
+
+      for (var j = 0; j < buttons.length; j++) {
+        buttons[j].classList.remove("active");
+      }
+
+      event.target.classList.add("active");
+    }
+
+    filterSelection("all");
+  </script>
+
+  <script>
+    document.addEventListener("scroll", function () {
+      const header = document.querySelector("header");
+      const scrollPercentage = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)).toFixed(2);
+      const opacity = 0.8 + (0.2 * scrollPercentage); // Linear interpolation between 0.8 and 1
+
+      header.style.background = `linear-gradient(to right, rgba(0, 0, 0, ${opacity}), rgba(34, 0, 0, ${opacity}), rgba(227, 0, 0, ${opacity}), rgba(255, 0, 0, ${opacity}))`;
+    });
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org/",
+    "@graph": [
+      {
+        "@type": "Product",
+        "name": "Zippy's Spiritual Reading (One Topic)",
+        "image": ["10001.png"],
+        "description": "20 mins only in $35. Get a spiritual reading with one topic of your choice.",
+        "offers": {
+          "@type": "Offer",
+          "price": "35.00",
+          "priceCurrency": "USD",
+          "availability": "http://schema.org/InStock"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Zippy's Spiritual Reading (Two Topics)",
+        "image": ["10001.png"],
+        "description": "40 mins only in $50. Get a spiritual reading with two topics of your choice.",
+        "offers": {
+          "@type": "Offer",
+          "price": "50.00",
+          "priceCurrency": "USD",
+          "availability": "http://schema.org/InStock"
+        }
+      },
+      {
+        "@type": "Product",
+        "name": "Zippy's Spiritual Reading (Three Topics)",
+        "image": ["10001.png"],
+        "description": "1 hour only in $70. Get a spiritual reading with three topics of your choice.",
+        "offers": {
+          "@type": "Offer",
+          "price": "70.00",
+          "priceCurrency": "USD",
+          "availability": "http://schema.org/InStock"
+        }
+      }
+    ]
+  }
+  </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your E-commerce Cart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="Home.html">
+                <img src="Logo.webp">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li class="active"><a href="Home.html">Home</a></li>
+                <li><a href="Aboutus.html">About</a></li>
+                <li><a href="Contactus.html">Contact</a></li>
+                <li><a href="Shop.html">Shop</a></li>
+                <li><a href="Blogs.html">Blogs</a></li>
+                <li><a href="#Categories">Categories</a></li>
+            </ul>
+        </nav>
+        <div class="icons">
+            <div id="searchBar" class="search-bar">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="profile-icon">
+                <button id="searchBtn">
+                    <img src="search.png" alt="Search">
+                </button>
+            </div>
+
+            <div class="profile-icon">
+                <button id="shopBtn">
+                    <img src="shop.PNG" alt="Shop">
+                </button>
+                <ul class="login-signup-list">
+                    <li><a href="#">Products</a></li>
+                    <li><a href="cart.html">Services</a></li>
+                </ul>
+            </div>
+
+            <div class="profile-icon">
+                <div class="profile-btn">
+                    <button id="profileBtn">
+                        <a>Login/SignUp</a>
+                    </button>
+                </div>
+                <ul class="login-signup-list">
+                    <li><a href="Login.html">Login</a></li>
+                    <li><a href="Signup.html">Sign Up</a></li>
+                    <div class="horizontal-line"></div>
+                    <li><a href="#">Bookings</a></li>
+                    <li><a href="#">Orders</a></li>
+                    <li><a href="Admin.html">My Account</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </header>
+    <main>
+        <section class="cart-items">
+            <div class="item">
+                <img src="item1.jpg" alt="Item 1">
+                <div class="item-details">
+                    <h2>Item 1</h2>
+                    <p>Price: $25.00</p>
+                    <button class="remove-btn" onclick="removeItem(1)">Remove</button>
+                </div>
+            </div>
+            <!-- Add more item elements here dynamically -->
+        </section>
+        <section class="cart-summary">
+            <h2>Cart Summary</h2>
+            <p>Total Items: <span id="totalItems">1</span></p>
+            <p>Total Price: $<span id="totalPrice">25.00</span></p>
+            <button class="checkout-btn">Checkout</button>
+        </section>
+    </main>
+    <script>
+        // Sample item data (replace this with your actual data)
+        const items = [
+            { id: 1, name: "Item 1", price: 25.00, image: "item1.jpg" },
+            // Add more items here
+        ];
+
+        const cartItems = document.querySelector(".cart-items");
+        const totalItemsSpan = document.getElementById("totalItems");
+        const totalPriceSpan = document.getElementById("totalPrice");
+
+        function updateCartSummary() {
+            const totalItems = items.length;
+            const totalPrice = items.reduce((acc, item) => acc + item.price, 0);
+
+            totalItemsSpan.textContent = totalItems;
+            totalPriceSpan.textContent = totalPrice.toFixed(2);
+        }
+
+        function removeItem(itemId) {
+            const itemIndex = items.findIndex((item) => item.id === itemId);
+
+            if (itemIndex !== -1) {
+                items.splice(itemIndex, 1);
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            cartItems.innerHTML = "";
+
+            items.forEach((item) => {
+                const itemElement = document.createElement("div");
+                itemElement.classList.add("item");
+                itemElement.innerHTML = `
+      <img src="${item.image}" alt="${item.name}">
+      <div class="item-details">
+        <h2>${item.name}</h2>
+        <p>Price: $${item.price.toFixed(2)}</p>
+        <button class="remove-btn" onclick="removeItem(${item.id})">Remove</button>
+      </div>
+    `;
+                cartItems.appendChild(itemElement);
+            });
+
+            updateCartSummary();
+        }
+
+        // Initial cart update
+        updateCart();
+
+    </script>
+</body>
+
+</html>

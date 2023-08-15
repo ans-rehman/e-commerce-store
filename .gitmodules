@@ -1,0 +1,3 @@
+[submodule "ZippyShopping"]
+	path = ZippyShopping
+	url = https://github.com/ironmanXthor/ZippyShopping_base/tree/main/ZippyShopping

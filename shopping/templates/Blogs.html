@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Blogs{% endblock title %}
+
+{% block activenav %}
+<nav>
+  <ul>
+    <li ><a href=" {% url 'home' %} ">Home</a></li>
+    <li><a href="{% url 'about' %}">About</a></li>
+    <li><a href="{% url 'contact' %}">Contact</a></li>
+    <li><a href="{% url 'shop' %}">Shop</a></li>
+    <li class="active"><a href="{% url 'blogs' %}">Blogs</a></li>
+    <li><a href="{% url 'categories' %}">Categories</a></li>
+  </ul>
+</nav>
+{% endblock activenav %}
+
+
+{% block maincontent %}
+    <main>
+      <div class="about-container">
+        <h1>BLOGS</h1>
+        <div class="horizontal-line"></div>
+        <h2 style="color: red">FEATURE POSTS</h2>
+        <div class="feature-blog">
+          <img src="qt=q_25.webp" alt="Blog" />
+          <div class="dscrpt">
+            <h1>EFFECTIVE WAYS TO RELAX</h1>
+            <p>
+              With so many personal and professional commitments in our life, we
+              often forget to take care of ourselves.Wondering how you can
+              replenish your mind, body, and soul?Here are 3 effective ways to
+              relax and breathe life into a new you: 1. Spiritual Candles
+              <a href="Home.html">(Nft products)</a> What else would be our
+              source of light and peace in …
+            </p>
+            <a href="#Blogs"><button class="blogBtn">Read More</button></a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="heading" id="Blogs">
+      <h1>MY BLOGS</h1>
+    </div>
+
+    <div class="blogs">
+      <div class="blogs-container">
+        <article id="relaxation">
+          <img src="powders.webp" alt="Image 1" />
+          <div class="articles">
+            <p style="color: #888">August 26, 2022 | Relaxation</p>
+            <h2>3 Effective Ways To Relax With Occult Products</h2>
+            <p>
+              With so many personal and professional commitments in our life, we
+              often forget to take care of ourselves.<br /><br />Wondering how
+              you can replenish your mind, body, and soul with Occult Products ?
+              Here are 3 effective ways to relax and breathe life into a new
+              you:
+            </p>
+            <a href="Blog1.html#Blogs">Read more</a>
+          </div>
+        </article>
+
+        <article id="candle-ritual">
+          <img src="candles.webp" alt="Image 2" />
+          <div class="articles">
+            <p style="color: #888">August 26, 2022 | Candles Ritual</p>
+            <h2>
+              11 Steps Of Find Happiness From The Spiritual Candle Fire Ritual
+            </h2>
+            <p>
+              Seven candles of certain colors are used in Buckland's traditional
+              rite. Although there are many various schools of thought on candle
+              colors, what matters is how we practice, not how particular we are
+              about the colors or the equipment we use.
+            </p>
+            <a href="Blog2.html#Blogs">Read more</a>
+          </div>
+        </article>
+
+        <!-- Add more articles for additional blog posts -->
+      </div>
+
+      <div class="filter-blogs">
+        <h1>Categories</h1>
+        <ul>
+          <li>All Posts</li>
+          <li>Candle Ritual</li>
+          <li>Relaxation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="heading">
+      <h1>GET CONNECTED</h1>
+    </div>
+{% endblock maincontent %}
