@@ -78,3 +78,6 @@ def services(request):
 def categories(request):
     # return render(request, 'terms.html')
     return redirect('home')
+
+def checkout(request):
+    return render(request, 'index (2).html')

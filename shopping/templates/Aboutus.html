@@ -3,18 +3,70 @@
 
 {% block title %}About Us{% endblock title %}
 
-{% block activenav %}
-<nav>
-  <ul>
-    <li ><a href=" {% url 'home' %} ">Home</a></li>
-    <li class="active"><a href="{% url 'about' %}">About</a></li>
-    <li><a href="{% url 'contact' %}">Contact</a></li>
-    <li><a href="{% url 'shop' %}">Shop</a></li>
-    <li><a href="{% url 'blogs' %}">Blogs</a></li>
-    <li><a href="#">Categories</a></li>
-  </ul>
-</nav>
-{% endblock activenav %}
+{% block navbar %}
+<ul class="navbar-nav me-auto mb-2 mb-sm-0">
+  <li class="nav-item">
+    <a class="nav-link" aria-current="page" href=" {% url 'home' %} ">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link active" href="{% url 'about' %}">About</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'shop' %}">Shop</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{% url 'blogs' %}">Blogs</a>
+  </li>
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Floor and Bath Wash</a></li>
+      <li><a class="dropdown-item" href="#">Mojo Bag & Miscellaneous</a></li>
+      <li><a class="dropdown-item" href="#">Oils</a></li>
+      <li><a class="dropdown-item" href="#">Powder</a></li>
+      <li><a class="dropdown-item" href="#">Zippy's Special Kits</a></li>
+      <li><a class="dropdown-item" href="#">Zippy's Candle Set</a></li>
+      <li><a class="dropdown-item" href="#">Jewelry</a></li>
+      <li><a class="dropdown-item" href="#">Candle & Incense</a></li>
+      <li><a class="dropdown-item" href="#">Spray & Soaps</a></li>
+      <li><a class="dropdown-item" href="#">Miscellaneous</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Orders</a>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{% url 'checkout' %}">Checkout</a></li>
+      <li><a class="dropdown-item" href="{% url 'services' %}">My cart</a></li>
+    </ul>
+  </li>
+
+  <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+    <ul class="dropdown-menu">
+      {% if user.is_authenticated %}
+      <li><a class="dropdown-item" href="">{{ user.username }}</a></li>
+      {% if user.is_superuser %}
+      <li><a class="dropdown-item" href="/admin" >Admin Panel</a></li>
+      {% else %}
+      <li><a class="dropdown-item" href=" {% url 'dashboard' %}">My Account</a></li>
+      {% endif %}
+      <li><a class="dropdown-item" href="{% url 'book' %}">Bookings</a></li>
+      <li><a class="dropdown-item" href="{% url 'order' %}">Orders</a></li>
+      <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+      </li>
+      {% else %}
+      <li><a class="dropdown-item" href="{% url 'loginlocal' %}">Login</a></li>
+      <li><a class="dropdown-item" href="{% url 'signuplocal' %}">Sign Up</a></li>
+      {% endif %}
+    </ul>
+  </li>
+</ul>
+{% endblock navbar %}
+
 {% block maincontent %}
     <main>
       <div class="about-container">

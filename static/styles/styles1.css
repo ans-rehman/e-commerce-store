@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  background: linear-gradient(to right, #323030, #393939);
+}
+
+
+
+.slideshow-container {
+  margin: 0%;
+  top: 0%;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide {
+  display: none;
+  max-width: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: auto;
+}
+
+/* Add animation for fading effect */
+.fade {
+  animation-name: fade;
+  animation-duration: 8s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes fade {
+  0% {
+      opacity: 0;
+  }
+  25% {
+      opacity: 1;
+  }
+  75% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 1;
+  }
+}

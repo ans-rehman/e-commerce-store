@@ -21,9 +21,8 @@ from . import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('zippyoccultshop/admin/', admin.site.urls),
-    path('zippyoccultshop/',include('shopping.urls')),
+    path('admin/', admin.site.urls, name='admin'),
+    path('',include('shopping.urls')),
     path('accounts/', include('django.contrib.auth.urls')),  # Add this line
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
-
 urlpatterns+=staticfiles_urlpatterns()

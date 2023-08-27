@@ -1,101 +1,197 @@
-<!-- templates/base.html -->
 {% load static %}
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>{% block title %}zippys occult shop{% endblock title %}</title>
-    <link rel="stylesheet" href="{% static "styles/styles.css" %}"> 
+<html lang="en" data-bs-theme="auto">
 
-    <!-- head section of the html pages -->
-    {% block head %}
-    {% endblock head %}
+<head>
 
-  </head>
-  <body>
+  <script src="{% static 'javascripts/color-modes.js' %}"></script>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>zippys occult shop | {% block title %}Home{% endblock title %}</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/navbars/">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+
+  <link rel="icon" href="{% static "images/Logo.webp" %}" type="image/webp">
+
+  <link href="{% static 'styles/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static "styles/styles.css" %}"> 
+  <!-- head section of the html pages -->
+      {% block head %}
+      {% endblock head %}
+ <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .b-example-divider {
+      width: 100%;
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .bd-mode-toggle {
+      z-index: 1500;
+    }
+</style>
 
 
-<!-- header content of the html pages -->
-    {% block aboveheader %}
-    <header>
-      <div class="logo">
-        <a href="{% url 'home' %}">
-          <img src="{%  static 'images/Logo.webp' %}" />
-        </a>
-      </div>
-    {% endblock aboveheader %}
+  <!-- Custom styles for this template -->
+  {% comment %} <link href="{% static 'styles/navbars.css' %}" rel="stylesheet"> {% endcomment %}
+</head>
 
-      {% block activenav %}
-      <nav>
-        <ul>
-          <li class="active"><a href=" {% url 'home' %} ">Home</a></li>
-          <li><a href="{% url 'about' %}">About</a></li>
-          <li><a href="{% url 'contact' %}">Contact</a></li>
-          <li><a href="{% url 'shop' %}">Shop</a></li>
-          <li><a href="{% url 'blogs' %}">Blogs</a></li>
-          <li><a href="{% url 'categories' %}">Categories</a></li>
-        </ul>
-      </nav>
-      {% endblock activenav %}
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+    <symbol id="check2" viewBox="0 0 16 16">
+      <path
+        d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
+    </symbol>
+    <symbol id="circle-half" viewBox="0 0 16 16">
+      <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z" />
+    </symbol>
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+      <path
+        d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z" />
+      <path
+        d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z" />
+    </symbol>
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+      <path
+        d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+    </symbol>
+  </svg>
 
-    {% block belowheader %}
+  <header class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+    <div class="container-fluid">
+      <a href="{% url 'home' %}" class="logo">
+        <img src="{%  static 'images/Logo.webp' %}">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
+        aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <div class="icons">
-        <div id="searchBar" class="search-bar">
-          <input type="text" placeholder="Search" />
-        </div>
-        <div class="profile-icon">
-          <button id="searchBtn">
-            <img src="{% static 'images/search.png' %}" alt="Search" />
-          </button>
-        </div>
+      <div class="collapse navbar-collapse" id="navbarsExample03">
+        {% block navbar %}
+        <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href=" {% url 'home' %} ">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'shop' %}">Shop</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'blogs' %}">Blogs</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Categories</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'shop' %}">Floor and Bath Wash</a></li>
+              <li><a class="dropdown-item" href="{% url 'shop' %}">Mojo Bag & Miscellaneous</a></li>
+              <li><a class="dropdown-item" href="{% url 'shop' %}">Oils</a></li>
+              <li><a class="dropdown-item" href="{% url 'shop' %}">Powder</a></li>
+              <li><a class="dropdown-item" href="{% url 'shop' %}">Zippy's Special Kits</a></li>
+              <li><a class="dropdown-item" href="{% url 'shop' %}">Zippy's Candle Set</a></li>
+              <li><a class="dropdown-item" href="{% url 'shop' %}">Jewelry</a></li>
+              <li><a class="dropdown-item" href="{% url 'shop' %}">Candle & Incense</a></li>
+              <li><a class="dropdown-item" href="{% url 'shop' %}">Spray & Soaps</a></li>
+              <li><a class="dropdown-item" href="{% url 'shop' %}">Miscellaneous</a></li>
+            </ul>
+          </li>
 
-        <div class="profile-icon">
-          <button id="shopBtn">
-            <img src="{% static "images/shop.PNG" %}" alt="Shop">
-          </button>
-          <ul class="login-signup-list">
-            <li><a href="#">Products</a></li>
-            <li><a href="{% url 'services' %}">Services</a></li>
-          </ul>
-        </div>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Orders</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'checkout' %}">Checkout</a></li>
+              <li><a class="dropdown-item" href="{% url 'services' %}">My cart</a></li>
+            </ul>
+          </li>
 
-        <div class="profile-icon">
-          <div class="profile-btn">
-            <button id="profileBtn">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+            <ul class="dropdown-menu">
               {% if user.is_authenticated %}
-              <a>{{ user.username }}</a>
+              <li><a class="dropdown-item" href="">{{ user.username }}</a></li>
+              {% if user.is_superuser %}
+              <li><a class="dropdown-item" href="/admin" >Admin Panel</a></li>
               {% else %}
-              <a>Login/signUp</a>
+              <li><a class="dropdown-item" href=" {% url 'dashboard' %}">My Account</a></li>
               {% endif %}
-            </button>
-          </div>
-          <ul class="login-signup-list">
-            {% if user.is_authenticated %}
-            <li><a href=" {% url 'dashboard' %}">My Account</a></li>
-            <li id="logout_link">
-              <a href="{% url 'logout' %}">Logout</a>
-            </li>
-            {% else %}
-            <li><a href="{% url 'loginlocal' %}">Login</a></li>
-            <li><a href="{% url 'signuplocal' %}">Sign Up</a></li>
-            {% endif %}
-            <div class="horizontal-line"></div>
-            <li><a href="{% url 'book' %}">Bookings</a></li>
-            <li><a href="{% url 'order' %}">Orders</a></li>
-          </ul>
-        </div>
+              <li><a class="dropdown-item" href="{% url 'book' %}">Bookings</a></li>
+              <li><a class="dropdown-item" href="{% url 'order' %}">Orders</a></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+              </li>
+              {% else %}
+              <li><a class="dropdown-item" href="{% url 'loginlocal' %}">Login</a></li>
+              <li><a class="dropdown-item" href="{% url 'signuplocal' %}">Sign Up</a></li>
+              {% endif %}
+            </ul>
+          </li>
+        </ul>
+        {% endblock navbar %}
+
+        <form role="search" class="mx-4">
+          <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+        </form>
+        </ul>
       </div>
-    </header>
-    {% endblock belowheader %}
+    </div>
+    </div>
+  </header>
 
+  {% block maincontent %}
+  {% endblock maincontent %}
 
-<!-- main content of the html pages -->
-    {% block maincontent %}
-    {% endblock maincontent %}
-
-
-<!-- footer content of the html pages -->
+  
 {% block footercontent %}
     <footer>
       <!-- Social Media Icons -->
@@ -154,10 +250,10 @@
 {% endblock footercontent %}
 
 
-<!-- javascriipts code of the html pages -->
 {% block scriptcontent %}
-<script src="script.js"></script>
 {% endblock scriptcontent %}
+<script src="{% static 'javascripts/bootstrap.bundle.min.js' %} "></script>
 
-  </body>
+</body>
+
 </html>

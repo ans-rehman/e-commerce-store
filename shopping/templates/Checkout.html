@@ -1,21 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% load static %}
+  {% block head %}
+  <link rel="stylesheet" href= "{% static 'checkout.css' %}">
+  {% endblock head %}
+  {% block title %} checkout{% endblock title %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="checkout.css">
-  <title>Checkout Page</title>
-</head>
-
-<body>
-  <header>
-    <div class="logo">
-      <a href="Home.html">
-        <img src="Logo.webp" alt="Logo">
-      </a>
-    </div>
-  </header>
+{% block maincontent %}
 
   <main>
     <div class="info">
@@ -73,7 +63,8 @@
     </div>
 
   </main>
-
+  {% endblock maincontent %}
+{% block scriptcontent %}
   <script>
     // Sample list of countries (you can use a more extensive list if needed)
     const countries = [
@@ -381,6 +372,4 @@
     displayProductInfo(products[0]);
 
   </script>
-</body>
-
-</html>
+  {% endblock scriptcontent %}
