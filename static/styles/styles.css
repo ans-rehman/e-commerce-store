@@ -131,7 +131,7 @@ header {
   color: white !important;
 }
 
-/* Default styles */
+/* Original styles */
 
 .dashboard {
   display: flex;
@@ -141,7 +141,6 @@ header {
   width: 20%;
   padding: 0px 20px 0px 30px;
   border-right: 0.5px solid #888;
-  box-sizing: border-box; /* Ensure padding doesn't affect width */
 }
 
 .dashboard ul li {
@@ -154,7 +153,6 @@ header {
   color: white;
   padding: 10px;
   width: 100%;
-  display: block; /* Ensure links take full width */
 }
 
 .active1 {
@@ -167,12 +165,9 @@ header {
   transition: 0.3s;
 }
 
-.user-details,
-.user-details-edit {
-  flex: 1; /* Allow user details to take remaining space */
-  padding: 0 30px;
+.user-details {
+  margin-left: 30px;
   height: 300px;
-  box-sizing: border-box; /* Ensure padding doesn't affect height */
 }
 
 .user-details p {
@@ -180,7 +175,37 @@ header {
   margin-bottom: 10px;
 }
 
-.user-details button,
+.user-details button {
+  margin-top: 10px;
+  width: 110px;
+  height: 40px;
+  text-align: center;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 3px;
+}
+
+.user-details button:hover {
+  background-color: black;
+  transform: scale(1.08);
+  transition: 0.3s;
+}
+
+.user-details-edit {
+  display: none;
+  margin-left: 30px;
+  height: 300px;
+}
+
+.user-details-edit input {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: black;
+  color: white;
+}
+
 .user-details-edit button {
   margin-top: 10px;
   width: 110px;
@@ -192,27 +217,35 @@ header {
   border-radius: 3px;
 }
 
-.user-details button:hover,
 .user-details-edit button:hover {
   background-color: black;
   transform: scale(1.08);
   transition: 0.3s;
 }
 
-.user-details-edit {
-  display: none;
-}
-
 @media screen and (max-width: 768px) {
-  .dashboard ul {
-    width: 40%;
-    padding: 20px;
+  .dashboard {
+    flex-direction: column;
   }
 
-  .dashboard ul li{
-    font-size: small;
+  .dashboard ul {
+    width: 100%;
+    padding: 0;
+    border-right: none;
+    border-bottom: 1px solid white;
+  }
+
+  .dashboard ul li {
+    margin-bottom: 10px;
+    padding: -5px;
+  }
+
+  .user-details,
+  .user-details-edit {
+    margin-left: 0;
   }
 }
+
 
 .slideshow-container {
   margin: 0%;
@@ -502,10 +535,6 @@ header {
 
   .after-start p{
     font-size: small;
-  }
-
-  .product-container {
-    justify-content: space-between;
   }
 
   .product-item {
